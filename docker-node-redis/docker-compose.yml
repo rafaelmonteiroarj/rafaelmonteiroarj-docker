@@ -1,0 +1,26 @@
+version: "3.7"
+
+services:
+  redis-server:
+    image: redis:latest
+    restart: unless-stopped
+    ports:
+      - '6379:6379'
+    volumes:
+      - $PWD/tmp:/data
+    networks:
+      - network-app
+  app:
+    build: 
+      dockerfile: Dockerfile
+      context: .
+    container_name: application-example
+    ports:
+      - "3000:3000"
+    networks:
+      - network-app
+    depends_on:
+      - "redis-server"
+networks:
+  network-app:
+    driver: bridge
