@@ -1,2 +1,5 @@
 /docker-node-redis/node_modules
 /docker-node-redis/tmp
+
+/docker-node-nginx-redis/node_modules
+/docker-node-nginx-redis/tmp
